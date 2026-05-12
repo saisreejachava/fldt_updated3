@@ -1,0 +1,174 @@
+/* People / Team page – Kittelson-style profile cards */
+
+/* CSS variables for consistent card backgrounds across all people cards.
+ * Use these in the card component so every card shares the same look. */
+:root {
+  --people-card-image-bg: rgba(30, 30, 38, 0.9);
+  --people-card-text-bg: rgba(28, 28, 36, 0.75);
+  --people-card-border: rgba(255, 255, 255, 0.12);
+  --people-card-name-color: #ffffff;
+  --people-card-title-color: #a3a3a3;
+  --people-card-location-color: rgba(255, 255, 255, 0.92);
+}
+
+.people-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.people-header {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0 40px;
+}
+
+.people-header .container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.people-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+}
+
+.people-back-link:hover {
+  color: var(--text);
+}
+
+.people-header h1 {
+  margin: 0 0 8px;
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display);
+  color: var(--text);
+}
+
+.people-header p {
+  margin: 0;
+  color: var(--ns-text-secondary);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  max-width: 560px;
+}
+
+.people-content {
+  padding: 48px 0 72px;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Card — Aether glass + NeuroSync type */
+.people-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--people-card-text-bg);
+  border: 1px solid var(--people-card-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: var(--shadow);
+  transition:
+    box-shadow var(--dur-med) var(--ease-out),
+    transform var(--dur-med) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.people-card:hover {
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-3px);
+  border-color: rgba(0, 240, 255, 0.22);
+}
+
+/* Upper section: fixed background so all cards look the same even with different photos */
+.people-card__image-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--people-card-image-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.people-card__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.people-card__location {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--people-card-location-color);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* Lower section: white background from variable */
+.people-card__text {
+  padding: 20px 16px 24px;
+  background: var(--people-card-text-bg);
+}
+
+.people-card__name {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: var(--fw-display);
+  letter-spacing: -0.03em;
+  color: var(--people-card-name-color);
+  line-height: 1.3;
+}
+
+.people-card__title {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-label);
+  font-weight: 400;
+  letter-spacing: var(--ls-mono-label);
+  text-transform: uppercase;
+  color: var(--people-card-title-color);
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .people-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .people-card__text {
+    padding: 16px 14px 20px;
+  }
+
+  .people-card__name {
+    font-size: 16px;
+  }
+}

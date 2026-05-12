@@ -1,0 +1,484 @@
+.about-page {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.about-hero {
+  padding: 28px 0 10px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-hero h1 {
+  margin: 8px 0 12px;
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display);
+}
+
+.about-hero .lede {
+  margin: 0;
+  max-width: 760px;
+  color: var(--ns-text-secondary);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+.about-pillars {
+  padding: clamp(48px, 7vw, 88px) 0 clamp(64px, 10vw, 120px);
+}
+
+.about-pillars__header {
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.about-pillars__header h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.about-pillars__question {
+  margin: 0;
+  max-width: 860px;
+  font-size: 17px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--fldt-orange, #e67e22);
+}
+
+.about-pillars__stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 5.5vw, 64px);
+}
+
+.about-pillars__stack .about-pillar-block:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.about-pillars__stack .about-pillar-block:nth-child(2) {
+  transition-delay: 0.14s;
+}
+
+.about-pillars__stack .about-pillar-block:nth-child(3) {
+  transition-delay: 0.28s;
+}
+
+.about-pillar-block {
+  --pillar-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(28px, 4vw, 44px) clamp(32px, 4vw, 48px);
+  align-items: center;
+  padding: clamp(28px, 4vw, 36px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--aether-border-light);
+  background: var(--aether-surface-glass);
+  backdrop-filter: blur(16px) saturate(145%);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.9s var(--pillar-ease),
+    transform 0.9s var(--pillar-ease),
+    border-color 0.35s ease,
+    box-shadow 0.55s var(--pillar-ease);
+}
+
+.about-pillar-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-pillar-block.is-visible:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 240, 255, 0.22);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(0, 240, 255, 0.1),
+    0 0 40px rgba(0, 240, 255, 0.06);
+}
+
+.about-pillar-block .about-pillar-block__visual {
+  transform: scale(0.98);
+  transform-origin: center center;
+  transition: transform 0.95s var(--pillar-ease);
+  transition-delay: 0.1s;
+}
+
+.about-pillar-block.is-visible .about-pillar-block__visual {
+  transform: scale(1);
+}
+
+.about-pillar-block__copy {
+  transition: opacity 0.85s var(--pillar-ease), transform 0.85s var(--pillar-ease);
+  transition-delay: 0.05s;
+}
+
+.about-pillar-block:not(.is-visible) .about-pillar-block__copy {
+  opacity: 0.92;
+  transform: translateY(8px);
+}
+
+.about-pillar-block.is-visible .about-pillar-block__copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-pillar-block--reverse .about-pillar-block__visual {
+  order: 2;
+}
+
+.about-pillar-block--reverse .about-pillar-block__copy {
+  order: 1;
+}
+
+.about-pillar-block--impact {
+  border-color: rgba(45, 212, 191, 0.4);
+  box-shadow:
+    var(--shadow),
+    0 0 0 1px rgba(45, 212, 191, 0.14),
+    0 0 36px rgba(45, 212, 191, 0.07);
+}
+
+.about-pillar-block--impact.is-visible:hover {
+  border-color: rgba(45, 212, 191, 0.52);
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(45, 212, 191, 0.2),
+    0 0 44px rgba(45, 212, 191, 0.12);
+}
+
+.about-pillar-visual {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.about-pillar-visual__pulse {
+  animation: about-pillar-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes about-pillar-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* FLDT pillar illustration motion */
+.about-pillar-visual--theme-0 .pv-sat-dash {
+  animation: about-sat-dash 14s linear infinite;
+}
+
+@keyframes about-sat-dash {
+  to {
+    stroke-dashoffset: -160;
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-hex-mesh {
+  animation: about-hex-fade 9s ease-in-out infinite;
+}
+
+@keyframes about-hex-fade {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.68;
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-pulse-a {
+  animation: about-node-pulse 2.6s ease-in-out infinite;
+}
+
+.about-pillar-visual--theme-0 .pv-pulse-b {
+  animation: about-node-pulse 2.6s ease-in-out 0.45s infinite;
+}
+
+.about-pillar-visual--theme-0 .pv-pulse-c {
+  animation: about-node-pulse 2.6s ease-in-out 0.9s infinite;
+}
+
+@keyframes about-node-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-feed-lines path {
+  animation: about-feed-lines 12s linear infinite;
+}
+
+@keyframes about-feed-lines {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-holo-border {
+  animation: about-holo-border 5s ease-in-out infinite;
+}
+
+@keyframes about-holo-border {
+  0%,
+  100% {
+    stroke-opacity: 0.85;
+  }
+  50% {
+    stroke-opacity: 1;
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-hurricane {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+  animation: about-hurricane-spin 28s linear infinite;
+}
+
+@keyframes about-hurricane-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-radar-sweep {
+  transform-origin: 0 0;
+  transform-box: fill-box;
+  animation: about-radar-sweep 4s linear infinite;
+}
+
+@keyframes about-radar-sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-pillar-visual--theme-0 .pv-right-feed path {
+  animation: about-right-feed 10s linear infinite;
+}
+
+@keyframes about-right-feed {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.about-pillar-visual--theme-1 .pv-water-wave {
+  animation: about-wave-drift 10s ease-in-out infinite alternate;
+  transform-origin: 200px 240px;
+}
+
+@keyframes about-wave-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-12px, 2px);
+  }
+}
+
+.about-pillar-visual--theme-1 .pv-coastline-drift {
+  animation: about-coast-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes about-coast-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(10px);
+  }
+}
+
+.about-pillar-visual--theme-1 .pv-sun-glow {
+  animation: about-sun-pulse 5s ease-in-out infinite;
+}
+
+@keyframes about-sun-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.about-pillar-visual--theme-1 .pv-twin-wire {
+  animation: about-twin-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes about-twin-glow {
+  0%,
+  100% {
+    opacity: 0.62;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.about-pillar-visual--theme-1 .pv-p1-dataflow path {
+  animation: about-p1-flow 16s linear infinite;
+}
+
+@keyframes about-p1-flow {
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+
+.about-pillar-visual--theme-1 .pv-p1-table-band {
+  animation: about-p1-table 5.5s ease-in-out infinite;
+}
+
+@keyframes about-p1-table {
+  0%,
+  100% {
+    opacity: 0.84;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-pillar-block {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .about-pillar-block.is-visible:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+
+  .about-pillar-block .about-pillar-block__visual,
+  .about-pillar-block.is-visible .about-pillar-block__visual {
+    transform: none;
+    transition: none;
+  }
+
+  .about-pillar-block__copy {
+    transition: none;
+  }
+
+  .about-pillar-block:not(.is-visible) .about-pillar-block__copy {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-pillar-visual__pulse {
+    animation: none;
+    opacity: 0.85;
+  }
+
+  .about-pillar-visual--theme-0 .pv-sat-dash,
+  .about-pillar-visual--theme-0 .pv-hex-mesh,
+  .about-pillar-visual--theme-0 .pv-pulse-a,
+  .about-pillar-visual--theme-0 .pv-pulse-b,
+  .about-pillar-visual--theme-0 .pv-pulse-c,
+  .about-pillar-visual--theme-0 .pv-feed-lines path,
+  .about-pillar-visual--theme-0 .pv-holo-border,
+  .about-pillar-visual--theme-0 .pv-hurricane,
+  .about-pillar-visual--theme-0 .pv-radar-sweep,
+  .about-pillar-visual--theme-0 .pv-right-feed path,
+  .about-pillar-visual--theme-1 .pv-water-wave,
+  .about-pillar-visual--theme-1 .pv-coastline-drift,
+  .about-pillar-visual--theme-1 .pv-sun-glow,
+  .about-pillar-visual--theme-1 .pv-twin-wire,
+  .about-pillar-visual--theme-1 .pv-p1-dataflow path,
+  .about-pillar-visual--theme-1 .pv-p1-table-band {
+    animation: none;
+  }
+
+  .about-pillar-visual--theme-0 .pv-pulse-a,
+  .about-pillar-visual--theme-0 .pv-pulse-b,
+  .about-pillar-visual--theme-0 .pv-pulse-c {
+    transform: none;
+    opacity: 0.88;
+  }
+
+  .about-pillar-visual--theme-1 .pv-water-wave,
+  .about-pillar-visual--theme-1 .pv-coastline-drift,
+  .about-pillar-visual--theme-1 .pv-sun-glow {
+    transform: none;
+  }
+
+  .about-pillar-visual--theme-1 .pv-sun-glow {
+    opacity: 0.82;
+  }
+
+  .about-pillar-visual--theme-1 .pv-p1-dataflow path {
+    stroke-dashoffset: 0;
+  }
+
+  .about-pillar-visual--theme-1 .pv-p1-table-band {
+    opacity: 0.92;
+  }
+
+  .about-pillar-visual--theme-0 .pv-hurricane,
+  .about-pillar-visual--theme-0 .pv-radar-sweep {
+    transform: none;
+  }
+
+  .about-pillar-visual--theme-0 .pv-feed-lines path,
+  .about-pillar-visual--theme-0 .pv-right-feed path {
+    stroke-dashoffset: 0;
+  }
+}
+
+.about-pillar-block__copy h3 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fldt-orange, #e67e22);
+}
+
+.about-pillar-block__copy p {
+  margin: 0;
+  color: var(--ns-text-secondary);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .about-pillar-block,
+  .about-pillar-block--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .about-pillar-block--reverse .about-pillar-block__visual,
+  .about-pillar-block--reverse .about-pillar-block__copy {
+    order: unset;
+  }
+
+  .about-pillar-visual {
+    max-height: 200px;
+  }
+}

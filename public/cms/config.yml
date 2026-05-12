@@ -1,0 +1,198 @@
+# Decap CMS Configuration for Florida Digital Twin Blog
+# Documentation: https://decapcms.org/docs/
+# PR setup guide: see public/cms/README.md
+#
+# WORKFLOW: Use "Save" to create/update a Pull Request. Do NOT use "Publish" or "Delete published entry"
+# until the PR has been reviewed and approved on GitHub. To enforce this, enable branch protection
+# on develop: Settings → Branches → Add rule → Require a pull request before merging
+# (e.g. require 1 approval). Then "Publish" / "Delete" from the CMS will only merge after approval.
+
+# Local dev: use same-origin proxy so CMS can reach decap-server. Run: npx decap-server (from landing/)
+# local_backend:
+#   url: '/api/v1'
+#   allowed_hosts: ['localhost', '127.0.0.1']
+
+backend:
+  name: github
+  repo: chjch/jaxtwin
+  branch: develop
+  base_url: http://34.73.182.55:8081
+  auth_endpoint: auth
+  squash_merges: true
+
+# Editorial workflow: "Save" = create/update PR (no direct push). "Publish" = merge PR (use only after PR review).
+publish_mode: editorial_workflow
+
+# Media files configuration (relative to repo root)
+media_folder: "landing/public/images/blog"
+public_folder: "/images/blog"
+
+# Site URL for previews
+logo_url: /images/splash-logo-image.svg
+
+# Slug configuration
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Collections
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    description: "Create and manage blog posts for the Florida Digital Twin website"
+    folder: "landing/content/posts"
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    delete: true
+    extension: "yaml"
+    format: "yaml"
+    slug: "{{slug}}"
+    summary: "{{title}} | {{category}} | {{publishedAt}}"
+    sortable_fields: ['publishedAt', 'title', 'category']
+    view_filters:
+      - label: "Featured Posts"
+        field: featured
+        pattern: true
+      - label: "Drafts"
+        field: draft
+        pattern: true
+      - label: "Research"
+        field: category
+        pattern: "research"
+      - label: "Technology"
+        field: category
+        pattern: "technology"
+      - label: "Community"
+        field: category
+        pattern: "community"
+      - label: "News"
+        field: category
+        pattern: "news"
+      - label: "Case Studies"
+        field: category
+        pattern: "case-study"
+    view_groups:
+      - label: "Category"
+        field: category
+      - label: "Year"
+        field: publishedAt
+        pattern: \d{4}
+    fields:
+      # Basic Info
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+        hint: "The main title of your blog post"
+
+      - label: "Excerpt / Summary"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "A brief summary (2-3 sentences) shown on blog cards and social shares"
+
+      # Cover Image
+      - label: "Cover Image"
+        name: "coverImage"
+        widget: "image"
+        required: false
+        allow_multiple: false
+        hint: "Featured image for the blog post. Use URL or upload. Recommended: 1200x630px"
+        media_library:
+          config:
+            multiple: false
+
+      # Publishing
+      - label: "Publish Date"
+        name: "publishedAt"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: true
+        default: ""
+
+      # Author
+      - label: "Author"
+        name: "author"
+        widget: "object"
+        collapsed: false
+        summary: "{{fields.name}}"
+        fields:
+          - label: "Name"
+            name: "name"
+            widget: "string"
+            required: true
+            default: "Florida Digital Twin Team"
+          - label: "Avatar"
+            name: "avatar"
+            widget: "image"
+            required: false
+            hint: "Author profile picture (optional)"
+
+      # Category
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        required: true
+        default: "news"
+        options:
+          - { label: "Research", value: "research" }
+          - { label: "Technology", value: "technology" }
+          - { label: "Community", value: "community" }
+          - { label: "News", value: "news" }
+          - { label: "Case Study", value: "case-study" }
+
+      # Tags
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Add relevant tags (press Enter after each tag)"
+        allow_add: true
+        collapsed: false
+        field:
+          label: "Tag"
+          name: "tag"
+          widget: "string"
+
+      # Flags
+      - label: "Featured Post"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        hint: "Featured posts appear prominently on the landing page"
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        hint: "Draft posts are hidden from the public site"
+
+      # Content - Full blog post body
+      - label: "Content"
+        name: "content"
+        widget: "markdown"
+        required: false
+        hint: "Write the full blog post content here using the rich text editor"
+        modes:
+          - rich_text
+          - raw
+        buttons:
+          - bold
+          - italic
+          - code
+          - link
+          - heading-two
+          - heading-three
+          - heading-four
+          - quote
+          - bulleted-list
+          - numbered-list
+        editor_components:
+          - image
+          - code-block

@@ -1,0 +1,96 @@
+title: Digital Twin Technology Explained
+excerpt: >-
+  What exactly is a digital twin? Learn how this revolutionary technology
+  creates virtual replicas of physical systems to enable better decision-making.
+coverImage: https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop
+publishedAt: '2026-01-10'
+author:
+  name: Prof. Michael Torres
+category: technology
+tags:
+  - Digital Twin
+  - Technology
+  - Simulation
+  - Urban Planning
+featured: true
+draft: false
+content: |
+  Digital twin technology is revolutionizing how we understand, manage, and plan our built environment. But what exactly is a digital twin, and why does it matter for Florida's future?
+
+  ## Defining Digital Twins
+
+  A **digital twin** is a virtual representation of a physical object, system, or process. Unlike traditional 3D models, digital twins are:
+
+  - **Dynamic**: They update in real-time with data from sensors and other sources
+  - **Interactive**: Users can manipulate variables and see predicted outcomes
+  - **Intelligent**: AI and machine learning enable predictive capabilities
+  - **Connected**: They integrate multiple data sources into a unified view
+
+  ## From Concept to Reality
+
+  The concept originated in manufacturing, where digital twins of machinery could predict maintenance needs. Today, we're applying this same principle to entire cities.
+
+  ### The Florida Digital Twin Architecture
+
+  Our platform consists of several interconnected layers: User Interfaces (Web, Mobile, AR/VR, API), Analytics & AI Engine, Data Integration Layer, and Geospatial Foundation.
+
+  ## Key Components
+
+  ### 3D City Models
+
+  We create detailed 3D representations of Florida's urban environments, including:
+
+  - Building footprints and heights
+  - Road networks and infrastructure
+  - Vegetation and tree canopy
+  - Underground utilities
+
+  ### Real-Time Data Integration
+
+  Our platform ingests data from numerous sources:
+
+  - Weather stations and forecasts
+  - Traffic sensors and GPS data
+  - Utility consumption patterns
+  - Environmental monitoring systems
+
+  ### Simulation Capabilities
+
+  Users can run sophisticated simulations including:
+
+  - **Flood modeling**: Visualize water flow and accumulation
+  - **Shadow analysis**: Understand solar exposure throughout the day
+  - **Heat mapping**: Identify urban heat island effects
+  - **Traffic flow**: Model congestion and emergency routes
+
+  ## Benefits for Florida
+
+  ### For Government Officials
+
+  - Evidence-based policy decisions
+  - Optimized infrastructure investments
+  - Improved emergency preparedness
+
+  ### For Researchers
+
+  - Access to comprehensive urban data
+  - Platform for testing hypotheses
+  - Collaboration opportunities
+
+  ### For Communities
+
+  - Transparent information access
+  - Participatory planning tools
+  - Personalized risk assessments
+
+  ## Technology Partners
+
+  The Florida Digital Twin leverages cutting-edge technology from our partners:
+
+  - **NVIDIA Omniverse**: Powering our real-time 3D simulations
+  - **ESRI ArcGIS**: Providing geospatial analysis capabilities
+  - **HiPerGator**: UF's supercomputer for complex computations
+
+  ## Getting Started
+
+  Whether you're a city planner, researcher, or concerned citizen, the Florida Digital Twin offers tools tailored to your needs. Contact us to schedule a demo and see how digital twin technology can benefit your work.

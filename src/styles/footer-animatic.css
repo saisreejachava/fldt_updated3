@@ -1,0 +1,318 @@
+.footer-animatic {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  min-height: 200px;
+  max-height: 320px;
+  contain: layout style;
+  isolation: isolate;
+}
+
+.footer-animatic__svg {
+  display: block;
+  width: 100%;
+  height: clamp(200px, 26vw, 320px);
+}
+
+/* Building windows — warm glints (daytime offices) */
+.footer-animatic__win {
+  animation: fa-window-flicker 4.2s ease-in-out infinite;
+}
+
+.footer-animatic__win--1 {
+  animation-duration: 3.6s;
+  animation-delay: 0.2s;
+}
+
+.footer-animatic__win--2 {
+  animation-duration: 5.1s;
+  animation-delay: 0.55s;
+}
+
+.footer-animatic__win--3 {
+  animation-duration: 3.9s;
+  animation-delay: 0.8s;
+}
+
+.footer-animatic__win--4 {
+  animation-duration: 4.8s;
+  animation-delay: 1.1s;
+}
+
+.footer-animatic__win--5 {
+  animation-duration: 3.3s;
+  animation-delay: 1.35s;
+}
+
+.footer-animatic__win--6 {
+  animation-duration: 5.4s;
+  animation-delay: 1.65s;
+}
+
+.footer-animatic__win--7 {
+  animation-duration: 4.5s;
+  animation-delay: 2s;
+}
+
+@keyframes fa-window-flicker {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  22% {
+    opacity: 0.95;
+  }
+  48% {
+    opacity: 0.55;
+  }
+  72% {
+    opacity: 1;
+  }
+}
+
+/* Cyan “parcel / twin” selection ring */
+.footer-animatic__hl-glow {
+  animation: fa-hl-glow 2.8s ease-in-out infinite;
+}
+
+.footer-animatic__hl-stroke {
+  animation: fa-hl-stroke 2.8s ease-in-out infinite;
+}
+
+@keyframes fa-hl-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes fa-hl-stroke {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Water shimmer + slow horizontal drift */
+.footer-animatic__river-shimmer {
+  animation: fa-river-shimmer 9s ease-in-out infinite;
+}
+
+@keyframes fa-river-shimmer {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}
+
+.footer-animatic__river-lines {
+  animation: fa-river-drift 14s linear infinite;
+}
+
+@keyframes fa-river-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-56px);
+  }
+}
+
+/* Foreground truss — subtle sheen */
+.footer-animatic__bridge {
+  animation: fa-bridge-settle 10s ease-in-out infinite;
+}
+
+@keyframes fa-bridge-settle {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Sparse cyan “sensor” points over the scene */
+.footer-animatic__twin-node {
+  animation: fa-twin-node 3.6s ease-in-out infinite;
+}
+
+.footer-animatic__twin-node:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.footer-animatic__twin-node:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+@keyframes fa-twin-node {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* Cyan street grid — data-flow dash speeds */
+.footer-animatic__mesh-line--0 {
+  stroke-dasharray: 10 18;
+  animation: fa-mesh-dash-a 14s linear infinite;
+}
+
+.footer-animatic__mesh-line--1 {
+  stroke-dasharray: 6 22;
+  animation: fa-mesh-dash-b 18s linear infinite;
+}
+
+.footer-animatic__mesh-line--2 {
+  stroke-dasharray: 14 20;
+  animation: fa-mesh-dash-c 22s linear infinite;
+}
+
+@keyframes fa-mesh-dash-a {
+  to {
+    stroke-dashoffset: -280;
+  }
+}
+
+@keyframes fa-mesh-dash-b {
+  to {
+    stroke-dashoffset: 320;
+  }
+}
+
+@keyframes fa-mesh-dash-c {
+  to {
+    stroke-dashoffset: -360;
+  }
+}
+
+.footer-animatic__mesh-arc {
+  animation: fa-mesh-arc 16s linear infinite;
+}
+
+@keyframes fa-mesh-arc {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+.footer-animatic__voxel {
+  animation: fa-voxel-pulse 3.4s ease-in-out infinite;
+}
+
+.footer-animatic__voxel:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.footer-animatic__voxel:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes fa-voxel-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.footer-animatic__data-chip {
+  animation: fa-chip-bob 4s ease-in-out infinite;
+}
+
+.footer-animatic__data-chip--d1 {
+  animation-delay: 0.65s;
+}
+
+.footer-animatic__data-chip--d2 {
+  animation-delay: 1.25s;
+}
+
+@keyframes fa-chip-bob {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.88;
+  }
+  50% {
+    transform: translate(0, -3px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-animatic__win,
+  .footer-animatic__hl-glow,
+  .footer-animatic__hl-stroke,
+  .footer-animatic__river-shimmer,
+  .footer-animatic__river-lines,
+  .footer-animatic__bridge,
+  .footer-animatic__twin-node,
+  .footer-animatic__mesh-line--0,
+  .footer-animatic__mesh-line--1,
+  .footer-animatic__mesh-line--2,
+  .footer-animatic__mesh-arc,
+  .footer-animatic__voxel,
+  .footer-animatic__data-chip {
+    animation: none;
+  }
+
+  .footer-animatic__win {
+    opacity: 0.88;
+  }
+
+  .footer-animatic__hl-glow {
+    opacity: 0.75;
+  }
+
+  .footer-animatic__hl-stroke {
+    opacity: 0.9;
+  }
+
+  .footer-animatic__river-shimmer {
+    opacity: 0.48;
+  }
+
+  .footer-animatic__river-lines {
+    transform: none;
+  }
+
+  .footer-animatic__twin-node {
+    opacity: 0.75;
+  }
+
+  .footer-animatic__mesh-line--0,
+  .footer-animatic__mesh-line--1,
+  .footer-animatic__mesh-line--2 {
+    stroke-dasharray: unset;
+  }
+
+  .footer-animatic__mesh-arc {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+
+  .footer-animatic__voxel {
+    opacity: 0.72;
+  }
+
+  .footer-animatic__data-chip {
+    transform: none;
+    opacity: 0.92;
+  }
+}

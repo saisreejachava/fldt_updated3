@@ -1,0 +1,115 @@
+/**
+ * Dark glass overrides for blog listing & light-theme remnants.
+ * Imported last (see global.css).
+ */
+
+.blogs-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  width: 100%;
+  max-width: 100%;
+}
+
+.blogs-header {
+  background:
+    radial-gradient(120% 80% at 10% 0%, rgba(0, 240, 255, 0.12), transparent 55%),
+    radial-gradient(80% 60% at 90% 20%, rgba(75, 75, 160, 0.35), transparent 50%),
+    linear-gradient(135deg, #0f0f14 0%, #12121c 45%, #0a0a10 100%);
+  border-bottom: 1px solid var(--aether-border-light);
+}
+
+.blogs-header__content h1 {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display);
+}
+
+.blogs-header__content p {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--ns-text-secondary);
+  max-width: 40rem;
+}
+
+.blogs-search__input {
+  background: var(--aether-surface-glass) !important;
+  border: 1px solid var(--aether-border-light) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.blogs-search__input::placeholder {
+  color: var(--muted);
+}
+
+.blogs-search__input:focus {
+  border-color: rgba(0, 240, 255, 0.35) !important;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.12) !important;
+}
+
+.search-icon {
+  color: var(--muted) !important;
+}
+
+.search-clear {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--muted) !important;
+}
+
+.search-clear:hover {
+  background: rgba(0, 240, 255, 0.12) !important;
+  color: var(--text) !important;
+}
+
+.blogs-filter-section h3 {
+  color: var(--ae-cyan) !important;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-label);
+  letter-spacing: var(--ls-mono-label);
+}
+
+.category-btn {
+  background: var(--aether-surface-glass) !important;
+  border: 1px solid var(--aether-border-light) !important;
+  color: var(--ns-text-secondary) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.category-btn:hover {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  color: var(--text) !important;
+}
+
+.tag-btn {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--aether-border-light) !important;
+  color: var(--muted) !important;
+}
+
+.tag-btn:hover {
+  border-color: rgba(75, 75, 160, 0.45) !important;
+  color: var(--text) !important;
+}
+
+.tag-btn.active {
+  background: rgba(75, 75, 160, 0.35) !important;
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  color: #fff !important;
+}
+
+.clear-filters-btn {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #fecaca !important;
+}
+
+.blogs-page .blog-card__title {
+  color: var(--text);
+}
+
+.blogs-page .blog-card__excerpt,
+.blogs-page .blog-card__meta,
+.blogs-page .blog-card__reading-time {
+  color: var(--ns-text-secondary);
+}
