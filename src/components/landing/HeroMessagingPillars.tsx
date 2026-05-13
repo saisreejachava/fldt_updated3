@@ -11,6 +11,10 @@ export function HeroMessagingPillars() {
   const [activeTitle, setActiveTitle] = useState<string | null>(null)
   const rowRef = useRef<HTMLDivElement>(null)
 
+  const activeStatement = activeTitle
+    ? keyStatements.find((s) => s.title === activeTitle) ?? null
+    : null
+
   const closeFlyout = () => {
     setActiveTitle(null)
   }
@@ -20,10 +24,6 @@ export function HeroMessagingPillars() {
     if (next && rowRef.current?.contains(next)) return
     closeFlyout()
   }
-
-  const activeStatement = activeTitle
-    ? keyStatements.find((s) => s.title === activeTitle) ?? null
-    : null
 
   useEffect(() => {
     if (!activeTitle) return
@@ -69,7 +69,10 @@ export function HeroMessagingPillars() {
         </div>
       </div>
 
-      <div className="hero-pillars-row" ref={rowRef}>
+      <div
+        className={`hero-pillars-row${activeStatement ? ' hero-pillars-row--open' : ''}`}
+        ref={rowRef}
+      >
         <div className="hero-pillars">
           {keyStatements.map((item) => (
             <article
@@ -77,7 +80,9 @@ export function HeroMessagingPillars() {
               role="button"
               tabIndex={0}
               aria-expanded={activeTitle === item.title}
-              aria-controls={activeTitle === item.title ? 'hero-statement-flyout-panel' : undefined}
+              aria-controls={
+                activeTitle === item.title ? 'hero-statement-flyout-panel' : undefined
+              }
               className={`hero-pillar${activeTitle === item.title ? ' is-active' : ''}`}
               onClick={(e) => handlePillarClick(e, item.title)}
               onKeyDown={(e) => handlePillarKeyDown(e, item.title)}
@@ -102,18 +107,20 @@ export function HeroMessagingPillars() {
         </div>
 
         {activeStatement ? (
-          <aside
-            id="hero-statement-flyout-panel"
-            key={activeStatement.title}
-            className="hero-statement-flyout"
-            aria-live="polite"
-            aria-label={`${activeStatement.title} statement`}
-          >
-            <div className="hero-statement-flyout__inner">
-              <p className="hero-statement-flyout__kicker">{activeStatement.title}</p>
-              <p className="hero-statement-flyout__body">{activeStatement.body}</p>
-            </div>
-          </aside>
+          <div className="hero-statement-slot">
+            <aside
+              id="hero-statement-flyout-panel"
+              key={activeStatement.title}
+              className="hero-statement-flyout"
+              aria-live="polite"
+              aria-label={`${activeStatement.title} statement`}
+            >
+              <div className="hero-statement-flyout__inner">
+                <p className="hero-statement-flyout__kicker">{activeStatement.title}</p>
+                <p className="hero-statement-flyout__body">{activeStatement.body}</p>
+              </div>
+            </aside>
+          </div>
         ) : null}
       </div>
     </div>
