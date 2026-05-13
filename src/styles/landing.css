@@ -460,7 +460,7 @@ body::after {
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: clamp(172px, 26vh, 260px) 0 clamp(88px, 10vh, 120px);
+  padding: clamp(196px, 30vh, 288px) 0 clamp(88px, 10vh, 120px);
   /* Same as --bg so the strip under the fixed nav does not form a contrasting seam */
   background: var(--bg);
   color: #f5f5f5;
@@ -482,7 +482,7 @@ body::after {
   position: relative;
   z-index: 2;
   width: 100%;
-  margin-top: clamp(10px, 2vh, 32px);
+  margin-top: clamp(20px, 3.5vh, 48px);
 }
 
 .hero-messaging-main {
@@ -571,6 +571,20 @@ body::after {
 .hero-pillars-row {
   position: relative;
   width: 100%;
+}
+
+@media (min-width: 901px) {
+  .hero-pillars-row:has(.hero-statement-flyout) {
+    display: grid;
+    grid-template-columns: minmax(0, min(520px, 44vw)) minmax(280px, 1fr);
+    align-items: stretch;
+    column-gap: clamp(20px, 3.5vw, 52px);
+  }
+
+  .hero-pillars-row:has(.hero-statement-flyout) .hero-pillars {
+    max-width: none;
+    width: 100%;
+  }
 }
 
 .hero-pillars {
@@ -713,7 +727,7 @@ body::after {
 .hero-pillar__title {
   margin: 0 0 6px;
   font-size: clamp(14px, 0.45vw + 13px, 18px);
-  font-weight: 650;
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: #fff;
 }
@@ -738,44 +752,47 @@ body::after {
   color: rgba(251, 191, 129, 0.95);
 }
 
-/* Fixed flyout: slides in left → right; vertical anchor follows selected card */
+/* Flyout: desktop = second grid column (same “slot” for all pillars); slides in L→R */
 @keyframes heroStatementFlyIn {
   from {
-    transform: translateY(-50%) translateX(calc(-1 * min(720px, 85vw)));
+    transform: translateX(calc(-1 * min(72px, 10vw)));
     opacity: 0;
   }
 
   to {
-    transform: translateY(-50%) translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
 
 .hero-statement-flyout {
-  position: absolute;
-  right: var(--content-rail-right);
-  top: var(--hero-flyout-y, 42vh);
+  position: relative;
   z-index: 8;
-  width: min(420px, calc(100vw - var(--content-rail-right) - var(--page-gutter-x)));
-  max-width: min(420px, calc(100vw - var(--content-rail-right) - var(--page-gutter-x)));
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
   pointer-events: auto;
-  transform: translateY(-50%) translateX(0);
+  transform: none;
   opacity: 1;
-  animation: heroStatementFlyIn 0.72s cubic-bezier(0.33, 1, 0.32, 1) both;
-  transition: top 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: heroStatementFlyIn 0.56s cubic-bezier(0.33, 1, 0.32, 1) both;
 }
 
 .hero-statement-flyout__inner {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-left: clamp(10px, 1.8vw, 18px);
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  padding-left: clamp(12px, 2vw, 20px);
   border-left: 1px solid rgba(0, 240, 255, 0.28);
 }
 
 .hero-statement-flyout__kicker {
   margin: 0;
-  font-size: 12px;
+  font-size: clamp(12px, 0.9vw, 14px);
   font-weight: 650;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -788,13 +805,13 @@ body::after {
 
 .hero-statement-flyout__body {
   margin: 0;
-  font-size: clamp(15px, 1.35vw, 18px);
-  line-height: 1.65;
+  font-size: clamp(17px, 1.55vw, 22px);
+  line-height: 1.62;
   font-weight: 450;
   color: rgba(248, 250, 252, 0.98);
-  max-height: min(48vh, 380px);
+  max-height: min(70vh, 520px);
   overflow-y: auto;
-  padding-right: 6px;
+  padding-right: 8px;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, 0.92),
     0 2px 18px rgba(0, 0, 0, 0.65),

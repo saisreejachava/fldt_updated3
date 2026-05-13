@@ -59,7 +59,7 @@
 .site-shell-nav__brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   text-decoration: none;
   color: var(--text);
   min-width: 0;
@@ -68,35 +68,44 @@
 .site-shell-nav__brand-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: flex-start;
+  gap: 1px;
   line-height: 1.12;
   min-width: 0;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
+  text-align: left;
 }
 
 .site-shell-nav__brand-mark {
-  font-size: 20px;
+  display: block;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #fff;
+  line-height: 1.1;
 }
 
 .site-shell-nav__brand-sub {
-  font-size: 13px;
+  display: block;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.72);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: min(280px, 42vw);
-  line-height: 1.25;
-  padding-bottom: 2px;
+  line-height: 1.2;
+  padding-bottom: 0;
 }
 
 .site-shell-nav__logo {
-  border-radius: 8px;
+  border-radius: 6px;
   flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  align-self: center;
 }
 
 .site-shell-nav__center {
