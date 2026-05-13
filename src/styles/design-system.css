@@ -26,6 +26,12 @@
 
   /* Readable line length on mobile; scales up on large / ultra-wide screens */
   --container: 1400px;
+  /* Matches .container / .site-shell-nav__pill — use for right-aligning hero flyout with nav */
+  --page-gutter-x: clamp(16px, 4vw, 28px);
+  --content-rail-right: max(
+    var(--page-gutter-x),
+    calc((100vw - min(var(--container), calc(100vw - 32px))) * 0.5 + var(--page-gutter-x))
+  );
 
   /* Semantic aliases (legacy vars across landing.css) */
   --primary: var(--ns-primary);
