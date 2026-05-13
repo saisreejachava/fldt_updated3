@@ -30,29 +30,36 @@
   background: transparent;
   border: none;
   box-shadow: none;
-  padding: 20px 22px 0;
+  padding: 20px 0 0;
   pointer-events: none;
+  width: 100%;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .site-shell-nav__pill {
   pointer-events: auto;
-  max-width: min(1120px, 100%);
+  width: 100%;
+  max-width: min(var(--container), calc(100% - 32px));
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 8px 20px;
-  padding: 12px 4px 10px;
+  padding: 12px clamp(16px, 4vw, 28px) 10px;
   border-radius: 0;
   background: transparent;
   border: none;
   box-shadow: none;
+  box-sizing: border-box;
 }
 
 .site-shell-nav__brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
   color: var(--text);
   min-width: 0;
@@ -61,27 +68,30 @@
 .site-shell-nav__brand-text {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  line-height: 1.05;
+  gap: 2px;
+  line-height: 1.12;
   min-width: 0;
+  padding-bottom: 4px;
 }
 
 .site-shell-nav__brand-mark {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #fff;
 }
 
 .site-shell-nav__brand-sub {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.72);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
+  max-width: min(280px, 42vw);
+  line-height: 1.25;
+  padding-bottom: 2px;
 }
 
 .site-shell-nav__logo {
@@ -497,7 +507,7 @@
   .site-shell-nav__pill {
     grid-template-columns: 1fr auto;
     border-radius: 0;
-    padding: 10px 12px;
+    padding: 10px clamp(16px, 4vw, 28px);
   }
 
   /* Readable panel only while the mobile drawer is open */

@@ -464,7 +464,8 @@ body::after {
   /* Same as --bg so the strip under the fixed nav does not form a contrasting seam */
   background: var(--bg);
   color: #f5f5f5;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 /* Nav is first child on home: sits on hero frames and scrolls away (not position:fixed) */
@@ -511,7 +512,7 @@ body::after {
 
 .hero-messaging {
   padding-top: 8px;
-  margin-bottom: 22px;
+  margin-bottom: clamp(88px, 12vh, 168px);
 }
 
 @keyframes heroMessagingLine1In {
@@ -540,44 +541,20 @@ body::after {
   }
 }
 
-/* Animated RGB-style gradient on primary headline */
+/* Primary headline — subdued, readable (template-aligned) */
 .hero-messaging__line1 {
   margin: 0 0 8px;
-  /* Stronger vw so type scales with viewport; higher cap so ultra-wide doesn’t look “tiny vs map” */
   font-size: clamp(2rem, 2.4vw + 1.1rem, 4.75rem);
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: -0.045em;
-  line-height: 1.05;
-  background: linear-gradient(
-    95deg,
-    #ff5c9d 0%,
-    #c084fc 18%,
-    #22d3ee 38%,
-    #4ade80 58%,
-    #fbbf24 78%,
-    #fb7185 92%,
-    #ff5c9d 100%
-  );
-  background-size: 240% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  background-position: 0% 50%;
-  /* Entrance first, then continuous shimmer (slower pacing) */
-  animation:
-    heroMessagingLine1In 1.45s cubic-bezier(0.22, 1, 0.32, 1) forwards,
-    heroRgbShimmer 12s linear 1.55s infinite;
+  line-height: 1.08;
+  color: rgba(248, 250, 252, 0.98);
+  -webkit-text-fill-color: rgba(248, 250, 252, 0.98);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 2px 24px rgba(0, 0, 0, 0.35);
+  animation: heroMessagingLine1In 1.45s cubic-bezier(0.22, 1, 0.32, 1) forwards;
   filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
-}
-
-@keyframes heroRgbShimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
 }
 
 .hero-messaging__line2 {
@@ -622,33 +599,62 @@ body::after {
 }
 
 .hero-pillar {
+  cursor: pointer;
   display: flex;
   align-items: flex-start;
   gap: clamp(12px, 1.2vw, 18px);
   padding: clamp(14px, 1.4vw, 22px) clamp(14px, 1.6vw, 22px) clamp(14px, 1.4vw, 22px)
     clamp(12px, 1.4vw, 18px);
-  border-radius: clamp(12px, 1vw, 16px);
-  background: rgba(10, 12, 20, 0.48);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(
+      155deg,
+      var(--hero-pillar-glass-highlight) 0%,
+      var(--hero-pillar-glass-mid) 48%,
+      transparent 100%
+    ),
+    var(--hero-pillar-glass-base);
+  backdrop-filter: blur(22px) saturate(170%) brightness(1.08);
+  -webkit-backdrop-filter: blur(22px) saturate(170%) brightness(1.08);
+  border: 1px solid var(--hero-pillar-border);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    0 10px 36px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transform: translate3d(0, 0, 0);
   transition:
     border-color 0.38s ease,
-    box-shadow 0.38s ease;
+    box-shadow 0.38s ease,
+    background 0.38s ease,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
   touch-action: manipulation;
 }
 
-.hero-pillar:hover,
-.hero-pillar:focus-within,
-.hero-pillar.is-active {
+.hero-pillar:hover:not(.is-active) {
+  transform: translate3d(0, -4px, 0);
   border-color: rgba(0, 240, 255, 0.22);
   box-shadow:
-    0 10px 36px rgba(0, 0, 0, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 0 1px rgba(0, 240, 255, 0.12);
+    0 20px 52px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 0 1px rgba(0, 240, 255, 0.12),
+    0 0 36px rgba(0, 240, 255, 0.1);
+}
+
+.hero-pillar.is-active {
+  border-color: rgba(0, 240, 255, 0.35);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 0 0 1px rgba(0, 240, 255, 0.14);
+}
+
+.hero-pillar.is-active:hover {
+  transform: translate3d(0, -3px, 0);
+  border-color: rgba(0, 240, 255, 0.42);
+  box-shadow:
+    0 22px 56px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(0, 240, 255, 0.2),
+    0 0 44px rgba(0, 240, 255, 0.14);
 }
 
 .hero-pillar:focus {
@@ -662,23 +668,41 @@ body::after {
 
 .hero-pillar__logo-wrap {
   flex-shrink: 0;
-  width: clamp(40px, 2.5vw + 32px, 52px);
-  height: clamp(40px, 2.5vw + 32px, 52px);
+  width: clamp(34px, 2vw + 28px, 44px);
+  height: clamp(34px, 2vw + 28px, 44px);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition:
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.38s ease,
+    border-color 0.38s ease,
+    box-shadow 0.38s ease;
+}
+
+.hero-pillar:hover .hero-pillar__logo-wrap {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .hero-pillar__logo {
-  width: clamp(24px, 1.2vw + 20px, 32px);
-  height: clamp(24px, 1.2vw + 20px, 32px);
+  width: clamp(18px, 0.85vw + 14px, 24px);
+  height: clamp(18px, 0.85vw + 14px, 24px);
   object-fit: contain;
   display: block;
   filter: brightness(0) invert(1);
   opacity: 0.9;
+  transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-pillar:hover .hero-pillar__logo {
+  opacity: 1;
+  transform: scale(1.04);
 }
 
 .hero-pillar__text {
@@ -714,10 +738,10 @@ body::after {
   color: rgba(251, 191, 129, 0.95);
 }
 
-/* Fixed flyout: copy on the map; slides from off-screen right; vertical anchor follows hovered card */
+/* Fixed flyout: slides in left → right; vertical anchor follows selected card */
 @keyframes heroStatementFlyIn {
   from {
-    transform: translateY(-50%) translateX(min(720px, 85vw));
+    transform: translateY(-50%) translateX(calc(-1 * min(720px, 85vw)));
     opacity: 0;
   }
 
@@ -728,13 +752,13 @@ body::after {
 }
 
 .hero-statement-flyout {
-  position: fixed;
+  position: absolute;
   right: clamp(16px, 4vw, 48px);
   top: var(--hero-flyout-y, 42vh);
-  z-index: 6;
-  width: min(420px, calc(100vw - 32px));
-  max-width: min(420px, calc(100vw - 32px));
-  pointer-events: none;
+  z-index: 8;
+  width: min(420px, calc(100% - 32px));
+  max-width: min(420px, calc(100% - 32px));
+  pointer-events: auto;
   transform: translateY(-50%) translateX(0);
   opacity: 1;
   animation: heroStatementFlyIn 0.72s cubic-bezier(0.33, 1, 0.32, 1) both;
@@ -751,7 +775,7 @@ body::after {
 
 .hero-statement-flyout__kicker {
   margin: 0;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 650;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -764,8 +788,8 @@ body::after {
 
 .hero-statement-flyout__body {
   margin: 0;
-  font-size: clamp(13px, 1.1vw, 14.5px);
-  line-height: 1.62;
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
   font-weight: 450;
   color: rgba(248, 250, 252, 0.98);
   max-height: min(48vh, 380px);
@@ -802,7 +826,6 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .hero-messaging__line1 {
     animation: none;
-    background: none;
     color: #fff;
     -webkit-text-fill-color: #fff;
     filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
@@ -820,6 +843,19 @@ body::after {
   .hero-statement-flyout {
     animation: none;
     transition: none;
+  }
+
+  .hero-pillar:hover,
+  .hero-pillar.is-active:hover {
+    transform: none;
+  }
+
+  .hero-pillar:hover .hero-pillar__logo-wrap {
+    transform: none;
+  }
+
+  .hero-pillar:hover .hero-pillar__logo {
+    transform: none;
   }
 }
 

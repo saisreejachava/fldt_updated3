@@ -49,6 +49,11 @@
   --aether-bg-elevated: #101014;
   --aether-bg-deep: #050507;
   --aether-surface-glass: rgba(40, 40, 48, 0.52);
+  /* Landing hero pillars: brighter frosted glass (template-style lift vs map) */
+  --hero-pillar-glass-highlight: rgba(255, 255, 255, 0.14);
+  --hero-pillar-glass-mid: rgba(255, 255, 255, 0.06);
+  --hero-pillar-glass-base: rgba(18, 24, 38, 0.34);
+  --hero-pillar-border: rgba(255, 255, 255, 0.14);
   --aether-border-light: rgba(255, 255, 255, 0.12);
   --aether-accent: var(--ae-cyan);
   --radius-panel: 12px;
