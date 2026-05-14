@@ -65,7 +65,7 @@ export function HeroMessagingPillars() {
       <div className="hero-messaging-main">
         <div className="hero-messaging">
           <h1 className="hero-messaging__line1">Florida Digital Twin.</h1>
-          <h2 className="hero-messaging__line2">Empower Our Communities..</h2>
+          <h2 className="hero-messaging__line2">Empower Our Communities</h2>
         </div>
       </div>
 
@@ -91,7 +91,7 @@ export function HeroMessagingPillars() {
               <div className="hero-pillar__logo-wrap" aria-hidden>
                 <img
                   className="hero-pillar__logo"
-                  src={LOGO_BY_TITLE[item.title] ?? '/images/splash-logo-image.svg'}
+                  src={LOGO_BY_TITLE[item.title] ?? '/images/splash-logo-image-demo.svg'}
                   alt=""
                   width={22}
                   height={22}

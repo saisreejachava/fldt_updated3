@@ -28,7 +28,7 @@ media_folder: "landing/public/images/blog"
 public_folder: "/images/blog"
 
 # Site URL for previews
-logo_url: /images/splash-logo-image.svg
+logo_url: /images/splash-logo-image-demo.svg
 
 # Slug configuration
 slug:

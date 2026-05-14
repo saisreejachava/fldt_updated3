@@ -15,10 +15,10 @@ export function SiteNavbar() {
         <Link to="/" className="site-shell-nav__brand" onClick={close} aria-label="Florida Digital Twin home">
           <img
             className="site-shell-nav__logo"
-            src="/images/splash-logo-image.svg"
+            src="/images/splash-logo-image-demo.svg"
             alt=""
-            width={26}
-            height={26}
+            width={32}
+            height={32}
           />
           <span className="site-shell-nav__brand-text">
             <span className="site-shell-nav__brand-mark">FLDT</span>
