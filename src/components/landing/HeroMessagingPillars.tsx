@@ -65,7 +65,7 @@ export function HeroMessagingPillars() {
       <div className="hero-messaging-main">
         <div className="hero-messaging">
           <h1 className="hero-messaging__line1">Florida Digital Twin.</h1>
-          <h2 className="hero-messaging__line2">Empowering Communities.</h2>
+          <h2 className="hero-messaging__line2">Empower Our Communities..</h2>
         </div>
       </div>
 
