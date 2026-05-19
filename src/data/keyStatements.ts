@@ -10,7 +10,7 @@ export const keyStatements: KeyStatement[] = [
     title: 'Definition',
     question: 'What is the Florida Digital Twin?',
     body:
-      'The Florida Digital Twin (FLDT) advances the scientific, technical, commercial and educational potential of geospatial digital twins for understanding and managing complex social, urban and environmental systems.',
+      'The Florida Digital Twin is a research and development program to advance the scientific, technical, commercial and educational potential of geospatial digital twins for understanding and managing complex urban and environmental systems.',
   },
   {
     title: 'Purpose',

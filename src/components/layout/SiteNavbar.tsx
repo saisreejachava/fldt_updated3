@@ -17,8 +17,8 @@ export function SiteNavbar() {
             className="site-shell-nav__logo"
             src="/images/splash-logo-image-demo.svg"
             alt=""
-            width={32}
-            height={32}
+            width={31}
+            height={31}
           />
           <span className="site-shell-nav__brand-text">
             <span className="site-shell-nav__brand-mark">FLDT</span>
