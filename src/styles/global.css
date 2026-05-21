@@ -1,6 +1,7 @@
 /* Landing app global styles — design-system must load first (NeuroSync + Aether tokens) */
 @import './design-system.css';
 @import './site-layout.css';
+@import './nav-mega-menu.css';
 @import './landing.css';
 @import './fldt-sections.css';
 @import './blogs.css';

@@ -1,10 +1,28 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ProductsTabVisual } from '../components/products/ProductsTabVisual'
 import '../styles/products-page.css'
 
 const TABS = ['Platforms', 'Tools', 'Interfaces'] as const
 type Tab = (typeof TABS)[number]
+
+const TAB_HASH: Record<Tab, string> = {
+  Platforms: 'platforms',
+  Tools: 'tools',
+  Interfaces: 'interfaces',
+}
+
+const HASH_TO_TAB: Record<string, Tab> = {
+  platforms: 'Platforms',
+  platform: 'Platforms',
+  tools: 'Tools',
+  interfaces: 'Interfaces',
+}
+
+function tabFromHash(hash: string): Tab | null {
+  const key = hash.replace(/^#/, '').toLowerCase()
+  return HASH_TO_TAB[key] ?? null
+}
 
 const CONTENT: Record<
   Tab,
@@ -95,7 +113,23 @@ function Icon({ kind }: { kind: 'people' | 'bulb' | 'desk' }) {
 }
 
 export default function ProductsPage() {
-  const [tab, setTab] = useState<Tab>('Platforms')
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [tab, setTab] = useState<Tab>(() => tabFromHash(location.hash) ?? 'Platforms')
+
+  const selectTab = useCallback(
+    (next: Tab) => {
+      setTab(next)
+      navigate({ pathname: '/products', hash: TAB_HASH[next] }, { replace: true })
+    },
+    [navigate]
+  )
+
+  useEffect(() => {
+    const fromHash = tabFromHash(location.hash)
+    if (fromHash) setTab(fromHash)
+  }, [location.hash])
+
   const active = CONTENT[tab]
 
   return (
@@ -123,7 +157,7 @@ export default function ProductsPage() {
                   role="tab"
                   aria-selected={tab === t}
                   className={`products-tab${tab === t ? ' is-active' : ''}`}
-                  onClick={() => setTab(t)}
+                  onClick={() => selectTab(t)}
                 >
                   {t}
                 </button>
